@@ -10,12 +10,12 @@ public class Combo implements Producto{
 	private int descuento;
 	
 	private String nombreCombo;
-	
+		
 	private List<Producto> itemsCombo;
 	
 	//Constructor
 	
-	public Combo(String elNombreCombo, int eldescuento, List<Producto> itemsDelCombo ) {
+	public Combo(String elNombreCombo, int eldescuento, List<Producto> itemsDelCombo) {
 		
 		descuento = eldescuento;
 		nombreCombo = elNombreCombo;
@@ -59,13 +59,20 @@ public class Combo implements Producto{
 		return precioFinal;
 		}
 
-	@Override
 	public int getCalorias() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int caloriasTotales = 0;
+		
+		Iterator<Producto> iter = itemsCombo.iterator();
+		
+		while (iter.hasNext()) {
+			
+			
+			caloriasTotales += iter.next().getCalorias();
+		}
+		
+		return caloriasTotales;
 	}
 		
-
-	
 }
 

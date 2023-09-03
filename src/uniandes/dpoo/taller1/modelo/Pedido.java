@@ -86,6 +86,19 @@ public class Pedido {
 		
 		return precioIVA;}
 	
+	private int getCaloriasPedido(){
+		
+		int caloriasTotales = 0;
+		
+		for (int i = 0; i < itemsPedido.size() ; i++)
+		{
+			int p = itemsPedido.get(i).getCalorias();
+			
+			caloriasTotales += p;}
+		
+		return caloriasTotales;}
+
+	
 	private String generarTextoFactura(){
 		
 		String textoFactura = "\n"+ "id de su pedido: " + String.valueOf(idPedido) + "\n";
@@ -106,6 +119,8 @@ public class Pedido {
 		textoFactura += "Precio neto: " +precioNeto + "\n";
 		int precioTotal = getPrecioTotalPedido();
 		textoFactura += "Precio total: " +precioTotal + "\n";
+		int caloriasTotales = getCaloriasPedido();
+		textoFactura += "Calorias totales: " +caloriasTotales + "\n";
 		
 		return textoFactura;}
 	
