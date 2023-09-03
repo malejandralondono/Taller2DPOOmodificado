@@ -4,16 +4,19 @@ public class Bebida implements Producto{
 	
 	//Atributos
 	
-	public String nombre;
+	private String nombre;
 	
-	public int precio;
+	private int precio;
+	
+	private int calorias;
 	
 	//Constructor
 	
-	public Bebida(String elNombre, int elprecio) {
+	public Bebida(String elNombre, int elPrecio, int lasCalorias) {
 		
 		nombre = elNombre;
-		precio = elprecio;
+		precio = elPrecio;
+		calorias= lasCalorias;
 	}
 
 	public String getNombre() {
@@ -34,6 +37,10 @@ public class Bebida implements Producto{
 
 		
 		return textoFactura;
+	}
+
+	public int getCalorias() {
+		return calorias;
 	}
 
 }

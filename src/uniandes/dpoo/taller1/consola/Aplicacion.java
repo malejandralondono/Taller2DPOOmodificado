@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import uniandes.dpoo.taller1.modelo.Bebida;
 import uniandes.dpoo.taller1.modelo.Combo;
 import uniandes.dpoo.taller1.modelo.Ingrediente;
 import uniandes.dpoo.taller1.modelo.Pedido;
@@ -84,7 +85,7 @@ public class Aplicacion
 		
 		restaurante = new Restaurante();
 
-		restaurante.cargarInfoRestaurante("./data/ingredientes.txt", "./data/menu.txt", "./data/combos.txt");
+		restaurante.cargarInfoRestaurante("./data/ingredientes.txt", "./data/menu.txt", "./data/combos.txt", "./data/bebidas.txt" );
 		
 		System.out.println("\n" + "Se ha iniciado el restaurante" + "\n");
 		
@@ -139,6 +140,21 @@ public class Aplicacion
 				System.out.println(String.valueOf(p));
 				System.out.println("\n");
 			}
+	
+		List<Bebida> Bebidas = restaurante.getBebidas();
+		System.out.println( "\n" + "BEBIDAS"+ "\n");
+			
+			for (int i = 0; i < Bebidas.size() ; i++)
+			{
+	
+				String n = Bebidas.get(i).getNombre();
+				int p = Bebidas.get(i).getPrecio();
+				
+				System.out.println(String.valueOf(i+1));
+				System.out.println(String.valueOf(n));
+				System.out.println(String.valueOf(p));
+				System.out.println("\n");
+			}
 	}
 	
 	public void ejecutarIniciarNuevoPedido(){
@@ -174,9 +190,9 @@ public class Aplicacion
 		
 		System.out.println("\n" + "Que tipo de elemento desea agregar a su pedido: " + "\n" + "Seleccione una opción");
 		
-		System.out.println("\n" + "1. PRODUCTO INDIVIDUAL" + "\n" + "2. COMBO"+ "\n" );
+		System.out.println("\n" + "1. PRODUCTO INDIVIDUAL" + "\n" + "2. COMBO"+ "\n"+ "3. BEBIDA"+ "\n" );
 		
-		String opcion = input("1/2");
+		String opcion = input("1/2/3");
 
 		if (opcion.equals("1")) 
 		{
@@ -226,6 +242,31 @@ public class Aplicacion
 				elProducto = Combos.get(elegido-1);}
 		
 		}
+		
+		else if (opcion.equals("3")) 
+		{
+			
+			List<Bebida> bebidas = restaurante.getBebidas();
+			System.out.println("BEBIDAS"+ "\n");
+			
+				for (int i = 0; i < bebidas.size() ; i++)
+				{
+
+					String n = bebidas.get(i).getNombre();
+					
+					System.out.println(String.valueOf(i+1));
+					System.out.println(String.valueOf(n));
+					System.out.println("\n");
+				}
+			int elegido = Integer.parseInt(input("\n" + "Seleccione el número del producto a añadir"));
+			
+			if (elegido>bebidas.size()) 
+			{System.out.println("Seleccion Invalida"+ "\n");}
+			
+			else {
+			elProducto = bebidas.get(elegido-1);}			
+		}
+		
 		else {{System.out.println( "\n" + "Seleccione una opción permitida"+ "\n");}
 		
 		}

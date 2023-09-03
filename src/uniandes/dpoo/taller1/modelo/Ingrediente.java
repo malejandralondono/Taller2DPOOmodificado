@@ -8,12 +8,15 @@ public class Ingrediente {
 	
 	private int costoAdicional;
 	
+	private int calorias;
+	
 	//Constructor
 	
-	public Ingrediente(String elNombre, int elcostoAdicional) {
+	public Ingrediente(String elNombre, int elcostoAdicional, int lasCalorias) {
 		
 		nombre = elNombre;
 		costoAdicional = elcostoAdicional;
+		calorias = lasCalorias; 
 				
 	}
 	
@@ -30,4 +33,8 @@ public class Ingrediente {
 		return costoAdicional;
 		
 		}
+	
+	public int getCalorias() {
+		return calorias;
+	}
 }

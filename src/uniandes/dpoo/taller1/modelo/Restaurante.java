@@ -56,13 +56,16 @@ public class Restaurante{
 	
 	public List<Combo> getCombos(){return Combos;}
 	
+	public List<Bebida> getBebidas(){return Bebidas;}
+	
 	public List<Pedido> getPedidos(){return Pedidos;}
 			
-	public void cargarInfoRestaurante(String archivoIngredientes, String archivoMenu, String archivoCombos ) throws IOException {
+	public void cargarInfoRestaurante(String archivoIngredientes, String archivoMenu, String archivoCombos, String archivoBebidas ) throws IOException {
 		
 		cargarIngredientes(archivoIngredientes);
 		cargarMenu(archivoMenu);
 		cargarCombos(archivoCombos);
+		cargarBebidas(archivoBebidas);
 		
 		
 	}
@@ -77,8 +80,9 @@ public class Restaurante{
 			String[] partes = linea.split(";");
 			String nombreIngrediente = partes[0];
 			int precio = Integer.parseInt(partes[1]);
+			int calorias = Integer.parseInt(partes[2]);
 			
-			Ingrediente elingrediente = new Ingrediente(nombreIngrediente, precio);
+			Ingrediente elingrediente = new Ingrediente(nombreIngrediente, precio, calorias);
 			Ingredientes.add(elingrediente);
 
 			linea = br.readLine(); 
@@ -88,6 +92,28 @@ public class Restaurante{
 		
 		}
 		
+	private void cargarBebidas(String archivoBebidas) throws IOException {
+		
+		
+		BufferedReader br = new BufferedReader(new FileReader(archivoBebidas));
+		
+		String linea = br.readLine();
+		while (linea != null) {
+			String[] partes = linea.split(";");
+			String nombreBebida = partes[0];
+			int precio = Integer.parseInt(partes[1]);
+			int calorias = Integer.parseInt(partes[2]);
+			
+			Bebida laBebida = new Bebida(nombreBebida, precio, calorias);
+			Bebidas.add(laBebida);
+
+			linea = br.readLine(); 
+		}
+
+		br.close();
+		
+		}
+	
 	private void cargarMenu(String archivoMenu) throws IOException {
 		
 		
@@ -98,8 +124,9 @@ public class Restaurante{
 			String[] partes = linea.split(";");
 			String nombreProducto = partes[0];
 			int precio = Integer.parseInt(partes[1]);
+			int calorias = Integer.parseInt(partes[2]);
 			
-			ProductoMenu elProducto = new ProductoMenu(nombreProducto, precio);
+			ProductoMenu elProducto = new ProductoMenu(nombreProducto, precio, calorias);
 			MenuBase.add(elProducto);
 			
 			linea = br.readLine(); 

@@ -5,16 +5,21 @@ public class ProductoMenu implements Producto{
 	
 	//Atributos
 	
-	public String nombre;
+	private String nombre;
 	
-	public int precioBase;
+	private int precioBase;
+	
+	private int calorias;
+	
+	
 	
 	//Constructor
 	
-	public ProductoMenu(String elNombre, int elprecioBase) {
+	public ProductoMenu(String elNombre, int elPrecioBase, int lasCalorias) {
 		
 		nombre = elNombre;
-		precioBase = elprecioBase;
+		precioBase = elPrecioBase;
+		calorias = lasCalorias;
 	}
 	
 	//Metodos
@@ -40,5 +45,10 @@ public class ProductoMenu implements Producto{
 
 		
 		return textoFactura;}
+
+	@Override
+	public int getCalorias() {
+		return calorias;
+	}
 	}
 
