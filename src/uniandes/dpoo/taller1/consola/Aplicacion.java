@@ -336,12 +336,19 @@ public class Aplicacion
 		
 		else 
 			{	
+			Boolean hay = false;
 			Pedido p = restaurante.getPedidoEnCurso();
 			List<Pedido> ps = restaurante.getPedidos();
+			
+			for (int i = 0; i < ps.size() ; i++)
+			{ if (p.equals(ps.get(i))) {hay = true;}}
+			 
 			ps.add(p);
 			restaurante.cerrarGuardarPedido();
 			System.out.println("\n"+"Se ha guardado su factura: "+ "\n" + "el id de su factura es: " + String.valueOf((restaurante.getPedidoEnCurso()).getIdPedido()));
 			
+			if(hay) {System.out.println("\n"+ "hay un pedido igual al suyo");}
+
 			}
 		}
 		
