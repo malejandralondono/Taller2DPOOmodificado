@@ -22,6 +22,8 @@ public class Restaurante{
 	
 	private List<Pedido> Pedidos;
 	
+	private List<Bebida> Bebidas;
+	
 	//Constructor
 	
 	public Restaurante() {
